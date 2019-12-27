@@ -1,0 +1,1 @@
+cmd_drivers/pnp/pnp.o := /opt/toolchains//crosstools-aarch64-gcc-5.5-linux-4.1-glibc-2.26-binutils-2.28.1/usr/bin/aarch64-buildroot-linux-gnu-ld -EL    -r -o drivers/pnp/pnp.o drivers/pnp/core.o drivers/pnp/card.o drivers/pnp/driver.o drivers/pnp/resource.o drivers/pnp/manager.o drivers/pnp/support.o drivers/pnp/interface.o drivers/pnp/quirks.o drivers/pnp/system.o 

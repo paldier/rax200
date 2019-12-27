@@ -1,0 +1,1 @@
+cmd_lib/lzo/lzo_decompress.o := /opt/toolchains//crosstools-aarch64-gcc-5.5-linux-4.1-glibc-2.26-binutils-2.28.1/usr/bin/aarch64-buildroot-linux-gnu-ld -EL    -r -o lib/lzo/lzo_decompress.o lib/lzo/lzo1x_decompress_safe.o 

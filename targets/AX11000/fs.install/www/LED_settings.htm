@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<%11%>
+
+<title>NETGEAR Router <%12%></title>
+<link rel="stylesheet" href="<%13%>">
+<link rel="stylesheet" href="css/scrollbar.css">
+<link rel="stylesheet" href="css/button.css">
+
+<script src="jquery.js"></script>
+<script src="script/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="script/jquery.jscrollpane.min.js"></script>
+
+<script src="script/script.js"></script>
+<link rel="stylesheet" href="form.css">
+<STYLE TYPE="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style>
+<%14%>
+<script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+    $(document).ready(function()
+    {	
+        $("#target").submit(function() {
+            buttonFilter();
+        });
+
+    });
+
+
+    function setHelpIframeVisible(){
+        $('.help-frame-div').css("visibility","visible");
+    }
+
+
+    function showHelpIframe() {
+
+        var imgSrc=document.getElementById('help-button');
+
+        if(imgSrc.src.search("up")>=0)
+        {
+            $(".help-frame-div").show();
+            window.frames["helpframe"].$('#content').jScrollPane({showArrows:true});
+            imgSrc.src="img/helparrowdown-icon.png";
+        }
+        else
+        {
+            $(".help-frame-div").hide();
+            imgSrc.src="img/helparrowup-icon.png";
+            setTimeout(setHelpIframeVisible,500);
+        }
+        if((navigator.appName.indexOf("Internet Explorer")==-1) ||
+           (navigator.appVersion.indexOf("MSIE 9")==-1))
+             change_size();
+
+    }
+
+    function moveToHTMLend()
+    {
+        window.location.href='#helpframe-anchor';
+        setHelpIframeVisible();
+    }
+
+
+    function loadhelp(fname,anchname)
+    {
+                var pane = window.frames["helpframe"].$('#content');
+                var imgSrc=document.getElementById('help-button');
+                if(imgSrc.src.search("up")<0)
+                {
+
+                        $(".help-frame-div").show();
+                        pane.jScrollPane({showArrows:true});
+
+
+                        if ((loadhelp.arguments.length == 1 ) || (anchname == "" ))
+                        {
+                                window.frames["helpframe"].location.href=fname+"_h.htm";
+                                $(".help-frame-div").show();
+                        }
+                        else
+                        {
+                                window.frames["helpframe"].location.href=fname+"_h.htm#" + anchname;
+                                $(".help-frame-div").show();
+                        }
+
+                        $(".help-frame-div").show();
+                        pane.jScrollPane({showArrows:true});
+
+                }
+    }
+
+
+function loadSettings()
+{
+	var cf = document.forms[0];
+	if (cf.led_now.value == "en_blink")
+	{
+		cf.led_settings[0].checked = true;
+	}
+	if (cf.led_now.value == "dis_blink")
+	{
+		cf.led_settings[1].checked = true;
+	}
+	if (cf.led_now.value == "turn_off")
+	{
+		cf.led_settings[2].checked = true;
+	}
+}
+
+function resize() {
+        if(get_browser()=="Chrome")
+            $(".scroll-pane").css("margin-top","-25px");
+    }
+
+//-->
+</script>
+<link href="css/custom.css" rel="stylesheet" type="text/css">
+</head>
+<body  onload="change_size();loadSettings();resize()" class="page-body" onResize="change_size();resize();" >
+    <img class="cover-image" src="<%81%>">
+    <!--<img class="body-image" src="<%82%>">-->
+    <div id="full-page-container">
+        <form id="target"  name="formname" method="POST" action="led_settings.cgi">
+            <input type="hidden" name="buttonHit"><input type="hidden" name="buttonValue">
+            <img class="subtop-image" src="<%83%>">
+            <div class="subhead2"><%671%></div>
+            <table border="0"    style="height:370px"  class="subhead2-table">
+                <tr align="left" valign="middle">
+                    <td   colspan="2" class="table-seperate-border">
+                    <div class="fix_button">
+         		<button value="<%85%>" onclick="buttonClick(this,'<%85%>');reset();loadSettings();" type="submit" name="Cancel" class="button-cancel cancel_bt" ><%85%></button>
+			<button value="<%87%>"  onclick="buttonClick(this,'<%87%>');" type="submit" name="Apply" class="button-apply apply_bt"><%87%></button>
+                       </div>
+                       </td>
+                </tr>
+                <tr><td class="scrollpane-table-seperate-border scroll_container pt-31" colspan="2"><div class="scroll-pane" style="height:365px;width:620px;overflow:auto;scrolling:auto"><table style="border-collapse:collapse;width:97%">
+                
+                    <tr>
+                        <td colspan="2">
+                         	<label class="checkbox-container">
+		 <input type="radio"  name="led_settings" value="en_blink"><%2801%>
+		  <span class="radio-checkmark"></span>
+		</label>
+                        
+                       </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="pt-15">
+                         	<label class="checkbox-container">
+		<input type="radio"  name="led_settings" value="dis_blink"><%2802%>
+		  <span class="radio-checkmark"></span>
+		</label>
+                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="pt-15">
+                         	<label class="checkbox-container">
+		 <input type="radio"  name="led_settings" value="turn_off"><%2803%>
+		  <span class="radio-checkmark"></span>
+		</label>
+                        
+                       </td>
+                    </tr>
+                </table></div></td></tr>
+                <tr valign="middle" align="center"><td class="table-seperate-border" colspan="2" style="padding-left:0px"><div class="help-frame-div" > <iframe id="helpframe"  src="LED_settings_h.htm" class="help-iframe" scrolling="no" name="helpframe" frameborder="0" onload="showHelpIframe();"></iframe> </div> </td> </tr>
+            </table>
+            <!--<img class="subfooter-image" src="img/subhead2-bottom.gif">-->
+            <div class="subhead2-bottom" >
+                <span class="help_ico"><img src="img/help-icon.png" onmouseover="changeCursorPointer();" onclick="showHelpIframe();" onmouseout="changeCursorDefault();"></span>
+                <span class="subhead2-text help_center_text" onclick="showHelpIframe();" onmouseover="changeCursorPointer();" onmouseout="changeCursorDefault();"> <%251%> </span>
+                <span class="button-help-arrow">
+                <img src="img/helparrowdown-icon.png" id="help-button" onclick="showHelpIframe();" onmouseover="changeCursorPointer();" onmouseout="changeCursorDefault();" ></span>
+                <span class="subhead2-text help_right_text" onclick="showHelpIframe();" onmouseover="changeCursorPointer();" onmouseout="changeCursorDefault();"> <%252%> </span>
+            </div>
+
+
+        <INPUT name=led_now type=hidden value="<%2804%>" >
+        <a name="helpframe-anchor"></a>
+        </form>
+    </div>
+</body>
+</html>
+

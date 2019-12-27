@@ -1,0 +1,1 @@
+cmd_ipc/built-in.o :=  /opt/toolchains//crosstools-aarch64-gcc-5.5-linux-4.1-glibc-2.26-binutils-2.28.1/usr/bin/aarch64-buildroot-linux-gnu-ld -EL    -r -o ipc/built-in.o ipc/compat.o ipc/util.o ipc/msgutil.o ipc/msg.o ipc/sem.o ipc/shm.o ipc/syscall.o ipc/ipc_sysctl.o 

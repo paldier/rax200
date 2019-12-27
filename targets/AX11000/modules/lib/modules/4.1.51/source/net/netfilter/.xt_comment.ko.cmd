@@ -1,0 +1,1 @@
+cmd_net/netfilter/xt_comment.ko := /opt/toolchains//crosstools-aarch64-gcc-5.5-linux-4.1-glibc-2.26-binutils-2.28.1/usr/bin/aarch64-buildroot-linux-gnu-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o net/netfilter/xt_comment.ko net/netfilter/xt_comment.o net/netfilter/xt_comment.mod.o

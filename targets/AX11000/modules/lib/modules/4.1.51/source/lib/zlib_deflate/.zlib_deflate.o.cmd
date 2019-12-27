@@ -1,0 +1,1 @@
+cmd_lib/zlib_deflate/zlib_deflate.o := /opt/toolchains//crosstools-aarch64-gcc-5.5-linux-4.1-glibc-2.26-binutils-2.28.1/usr/bin/aarch64-buildroot-linux-gnu-ld -EL    -r -o lib/zlib_deflate/zlib_deflate.o lib/zlib_deflate/deflate.o lib/zlib_deflate/deftree.o lib/zlib_deflate/deflate_syms.o 

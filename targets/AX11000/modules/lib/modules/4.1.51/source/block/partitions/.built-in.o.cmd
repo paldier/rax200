@@ -1,0 +1,1 @@
+cmd_block/partitions/built-in.o :=  /opt/toolchains//crosstools-aarch64-gcc-5.5-linux-4.1-glibc-2.26-binutils-2.28.1/usr/bin/aarch64-buildroot-linux-gnu-ld -EL    -r -o block/partitions/built-in.o block/partitions/check.o block/partitions/ldm.o block/partitions/msdos.o block/partitions/efi.o 

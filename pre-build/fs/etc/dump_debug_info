@@ -1,0 +1,5 @@
+#!/bin/bash
+dw -s 0x822079f0 132
+dw -s 0x8221ac00 32
+bs /d/r/re 0 0 0; dw -s 0x82228000 1024; bs /d/r/re 0 0 1
+

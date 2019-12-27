@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<%11%>
+<title>NETGEAR Router <%12%></title>
+<link rel="stylesheet" href="<%13%>">
+<link rel="stylesheet" href="css/scrollbar.css">
+<link rel="stylesheet" href="css/button.css">
+
+<script src="jquery.js"></script>
+<script src="script/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="script/jquery.jscrollpane.min.js"></script>
+
+<script src="script/script.js"></script>
+<link rel="stylesheet" href="form.css">
+<script language=JavaScript type="text/javascript">
+
+
+
+    $(document).ready(function()
+    {	
+        $("#target").submit(function() {
+            buttonFilter();
+        });
+
+    });
+
+
+
+function Fresh() 
+{
+	var cf = document.forms[0];
+	if(cf.refreshScrn.value == "yes")
+		window.setTimeout("location.href='RST_st_fix.htm'",10000);
+// reload if not connected	
+}
+</script>
+<link href="css/custom.css" rel="stylesheet" type="text/css">
+</head>
+
+<body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" text=black onLoad="Fresh()" style="margin:0px">
+
+<form id="target"  method="post" action="st_fixip.cgi">
+<input type="hidden" name="buttonHit"><input type="hidden" name="buttonValue">
+
+<TABLE border=0 width="100%">
+
+ 
+ <TR>
+ <TD colspan="2" align="left" nowrap><div class="subhead2 page_title"><%1083%> </div></TD>
+ </TR>
+ 
+</TABLE>
+
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+
+<tr> 
+ <td background="liteblue.gif" height="12"> &nbsp;</td>
+</tr>
+</table>
+
+<div class="pt-30 pl28 pr-30">
+<table width="100%" border=1 cellspacing=1 cellpadding=4>
+	<tr>
+		<TD NOWRAP width="50%"><B><%486%></B></td>
+		<%1690%>
+        <TD NOWRAP width="50%"><%1743%></td>
+        <%1703%>
+        <%1704%>
+        <TD NOWRAP width="50%"><%512%></td>
+        <%1707%>	
+    </tr>
+	<tr>
+		<TD NOWRAP><B><%817%></B></td>
+        <%1690%>
+		<TD NOWRAP><%1744%></td>
+        <%1703%>
+        <%1704%>
+        <TD NOWRAP width="50%"><%513%></td>
+        <%1707%>  	
+    </tr>
+	<tr>
+		<TD NOWRAP><B><%1709%></B></td>
+        <%1690%>
+		<TD NOWRAP><%1745%></td>
+        <%1703%>
+        <%1704%>
+        <TD NOWRAP width="50%"><%514%></td>
+        <%1707%> 	
+    </tr>
+	<tr>
+		<TD NOWRAP><B><%1714%></B></td>
+        <%1690%>
+		<TD NOWRAP><%1746%></td>
+        <%1703%>
+        <%1704%>
+        <TD NOWRAP width="50%"><%516%><br><%517%></td>
+        <%1707%>  	
+    </tr>
+</table>
+</div>
+
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+
+<tr> 
+ <td height="12"><div style="background-image:url('seprator.gif');width:100%;background-repeat:repeat-x">&nbsp;</div></td>
+</tr>
+ <TR>
+ <TD align="center"><button type=button value="<%727%>" name="close" class="button-sty1" onclick="buttonClick(this,'<%727%>');self.close();"><%727%></button></TD>
+</TR>
+</TABLE>
+
+
+<input type="hidden" name="refreshScrn" value="yes">
+</form>
+
+</body>
+</html>
+

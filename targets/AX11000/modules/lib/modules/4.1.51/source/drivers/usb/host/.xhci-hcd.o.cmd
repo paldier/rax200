@@ -1,0 +1,1 @@
+cmd_drivers/usb/host/xhci-hcd.o := /opt/toolchains//crosstools-aarch64-gcc-5.5-linux-4.1-glibc-2.26-binutils-2.28.1/usr/bin/aarch64-buildroot-linux-gnu-ld -EL    -r -o drivers/usb/host/xhci-hcd.o drivers/usb/host/xhci.o drivers/usb/host/xhci-mem.o drivers/usb/host/xhci-ring.o drivers/usb/host/xhci-hub.o drivers/usb/host/xhci-dbg.o drivers/usb/host/xhci-trace.o 

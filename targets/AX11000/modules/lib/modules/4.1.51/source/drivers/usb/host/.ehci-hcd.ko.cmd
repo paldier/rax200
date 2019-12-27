@@ -1,0 +1,1 @@
+cmd_drivers/usb/host/ehci-hcd.ko := /opt/toolchains//crosstools-aarch64-gcc-5.5-linux-4.1-glibc-2.26-binutils-2.28.1/usr/bin/aarch64-buildroot-linux-gnu-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o drivers/usb/host/ehci-hcd.ko drivers/usb/host/ehci-hcd.o drivers/usb/host/ehci-hcd.mod.o

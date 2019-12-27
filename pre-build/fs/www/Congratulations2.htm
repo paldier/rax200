@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="<%295%>">	
+	<title>NETGEAR Genie</title>
+	
+	<link href="css/custom.css" rel="stylesheet" type="text/css">
+</head>
+<script src="jquery.js"></script>
+<script src="script/script.js"></script> 
+<script >
+var mode = <%3771%>
+function submit()
+{
+    document.forms["target"].submit();
+}
+
+function clickHere()
+{
+    var mode = <%2877%>;
+    if(mode == "1"){
+        window.open ('start.htm','_blank','fullscreen=yes,toolbar=yes,locaiton=yes');
+    }else{
+        if(parent.$("#BasicTab").hasClass('current')){
+            parent.loadPage("WLG_wireless_dual_band.htm");
+        }else{
+            parent.loadPage2("WLG_wireless_dual_band.htm");
+        }        	
+    }
+
+}
+
+function showPassphrase()
+{
+	if(document.forms[0].wireless_2g_security.value==document.forms[0].wireless_5g_security.value)
+    document.getElementById("secuirty_2g").style.display="none";
+  else
+    document.getElementById("secuirty_2g").style.display="block";
+
+  //<!--dual or tri : display 5GHz-2 or not-->
+  <%3772%>
+  document.getElementById("secuirty_2g").style.display="block";
+  document.getElementById("5GHz-1").innerHTML="5GHz-1 <%3773%>:";
+  document.getElementById("5GHz-2").style.display="block";
+  
+  <%3774%>
+}
+function ChromeButton()
+{
+    /*if(get_browser()=="Chrome")
+	    $('.purpleBtn2').css("padding","0px 0px 0px 11px");	
+	else
+	    $('.purpleBtn2').css("padding", "0px 5px 0px 0px");*/
+}
+</script>
+<body style="background-color:#ffffff"  onload="showPassphrase();ChromeButton()">
+<form id="target"  name="formname" method="POST" action="congratulations.cgi" target="_parent">
+	<table border="0" cellpadding="0" cellspacing="3"  width="99%">
+	<tr style="height:10px">
+		<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td class="centerTd"><div class="subhead2 pl-0"><%2878%></div></td><td>&nbsp;</td>
+        <tr>
+	<tr>
+		<td>&nbsp;</td><td class="textRow centerTd"><%2879%></td><td>&nbsp;</td>
+        </tr>
+	<tr style="height:10px">
+		<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr>
+        <tr>
+		<td>&nbsp;</td>
+		<td class="textRow centerTd" style="<%2880%>"><%2881%></td>
+		<td>&nbsp;</td>
+        </tr>
+	<tr>
+		<td>&nbsp;</td><td></td><td>&nbsp;</td>
+        </tr>
+	<tr>
+        	<td>&nbsp;</td><td class="textRow centerTd" style="<%2880%>"><span style="display:-moz-inline-box;display:inline-block;width:300px;"><%2882%></span><span ><b><%1937%></span></b></td><td>&nbsp;</td>
+	</tr>	
+  </table>
+  <div id="secuirty_2g" style="display:none">
+	<table border="0" cellpadding="0" cellspacing="3"  width="99%">
+
+	<tr>	
+		<td>&nbsp;</td>	
+		<td class="textRow centerTd" style="<%2880%>"><span style="display:-moz-inline-box;display:inline-block;width:300px;"><%2888%>:<span title="<%2889%>"><%2890%>:</span></span><span><b><%2884%></span></b></td>
+		<td>&nbsp;</td>
+	</tr>
+  </table>  
+  </div>
+	<%1658%>
+	<table border="0" cellpadding="0" cellspacing="3"  width="99%">
+	<tr>
+        	<td>&nbsp;</td>
+		<td class="textRow centerTd" style="<%2885%>"><span id="5GHz-1" style="display:-moz-inline-box;display:inline-block;width:300px;">5GHz <%3773%>:</span><span><b><%2887%></b></span></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+                <td>&nbsp;</td>
+                <td class="textRow centerTd" style="<%2880%>"><span style="display:-moz-inline-box;display:inline-block;width:300px;"><%2888%>:<span title="<%2889%>"><%2890%>:</span></span><span><b><%2891%></span></b></td>
+                 <td>&nbsp;</td>
+	</tr>
+  </table>
+  
+	<div id="5GHz-2" style="display:none">
+	<table border="0" cellpadding="0" cellspacing="3"  width="99%">
+	<tr>
+        	<td>&nbsp;</td>
+		<td class="textRow centerTd" style="<%2885%>"><span style="display:-moz-inline-box;display:inline-block;width:300px;">5GHz-2 <%3773%>:</span><span><b><%3775%></b></span></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+                <td>&nbsp;</td>
+                <td class="textRow centerTd" style="<%2880%>"><span style="display:-moz-inline-box;display:inline-block;width:300px;"><%2888%>:<span title="<%2889%>"><%2890%>:</span></span><span><b><%3776%></span></b></td>
+                 <td>&nbsp;</td>
+	</tr>
+    </table>
+	</div>	
+	<%1675%>
+	
+	<table border="0" cellpadding="0" cellspacing="3"  width="99%">
+    <%2892%>
+    <tr>
+      <td>&nbsp;</td><td></td><td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td class="textRow centerTd"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <%2893%>
+
+        <tr>
+		<td>&nbsp;</td>
+        	<td class="textRow centerTd">		
+			<button class = "button-sty1"  onclick="window.print();return false;"><span><%3777%></span></button>
+			<span style="display:-moz-inline-box;display:inline-block;width:300px;"></span>
+<button class = "button-sty1"  onclick="window.location.href='VER_check.htm';return false;"><span><%343%></span></button>
+		</td>
+      <td>&nbsp;</td>
+	</tr>
+	</table>
+    <input type="hidden" name="wireless_2g_security" value="<%508%>" />
+    <input type="hidden" name="wireless_5g_security" value="<%509%>" />
+</form>
+</body>
+</html>

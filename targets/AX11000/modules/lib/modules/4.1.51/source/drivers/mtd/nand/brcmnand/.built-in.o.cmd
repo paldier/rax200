@@ -1,0 +1,1 @@
+cmd_drivers/mtd/nand/brcmnand/built-in.o :=  /opt/toolchains//crosstools-aarch64-gcc-5.5-linux-4.1-glibc-2.26-binutils-2.28.1/usr/bin/aarch64-buildroot-linux-gnu-ld -EL    -r -o drivers/mtd/nand/brcmnand/built-in.o drivers/mtd/nand/brcmnand/iproc_nand.o drivers/mtd/nand/brcmnand/bcm63xx_nand.o drivers/mtd/nand/brcmnand/brcmstb_nand.o drivers/mtd/nand/brcmnand/brcmnand.o 

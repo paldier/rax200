@@ -1,0 +1,424 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<%11%>
+
+<title>NETGEAR Router <%12%></title>
+
+<link rel="stylesheet" href="css/button.css">
+<link rel="stylesheet" href="form.css"> <!--To become single liteblue-->
+
+<script src="script/script.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function init()
+{
+	var cf2 = document.forms[2];
+	if (cf2.capture_in_process.value != "")	
+		cf2.action_Start_Capture.outerHTML='<button type="SUBMIT" value="Start_Capture" name=action_Start_Capture class="button-sty1" disabled="disabled">Start Capture </button>';		
+}
+
+function raEnabled()
+{
+	document.getElementById('raBtnLeft').className = "roundleft_button";
+	document.getElementById('raBtnRight').className = "roundright_button";
+	document.getElementById('raParamSetting').disabled = "";
+}
+
+function raDisabled()
+{
+	document.getElementById('raBtnLeft').className = "roundleft_grey";
+	document.getElementById('raBtnRight').className = "roundright_grey";
+	document.getElementById('raParamSetting').disabled = "disabled";
+}
+
+function checkRAData()
+{
+	var enabled = 0;
+    var cf4 = document.forms[4];
+
+/*
+	if (cf4.stageQa.value != cf4.raStageQa.value)
+		enabled=1;
+	if (cf4.stageDev.value != cf4.raStageDev.value)
+		enabled=1;
+	if (cf4.stageProd.value != cf4.raStageProd.value)
+		enabled=1;
+*/
+	if (cf4.serverIP.value != cf4.raServerIP.value)
+		enabled=1;
+    if (cf4.HTTPserverIP.value != cf4.raHTTPServerIP.value)
+        enabled=1;
+	if (cf4.initStartTime.value != cf4.raInitStartTime.value)
+		enabled=1;
+
+	if (enabled ==1)
+		raEnabled();
+	else
+		raDisabled();
+}
+
+function stageQaChange()
+{
+    var cf4 = document.forms[4];
+    cf4.stageQa.value = "1";
+    cf4.stageQa.checked=true;
+    cf4.stageDev.value = "0";
+    cf4.stageDev.checked=false;
+    cf4.stageProd.value = "0";
+    cf4.stageProd.checked=false;
+    checkRAData();
+}
+
+function stageDevChange()
+{
+    var cf4 = document.forms[4];
+    cf4.stageQa.value = "0";
+    cf4.stageQa.checked=false;
+    cf4.stageDev.value = "1";
+    cf4.stageDev.checked=true;
+    cf4.stageProd.value = "0";
+    cf4.stageProd.checked=false;
+    checkRAData();
+}
+
+function stageProdChange()
+{
+    var cf4 = document.forms[4];
+    cf4.stageQa.value = "0";
+    cf4.stageQa.checked=false;
+    cf4.stageDev.value = "0";
+    cf4.stageDev.checked=false;
+    cf4.stageProd.value = "1";
+    cf4.stageProd.checked=true;
+    checkRAData();
+}
+
+function serverIPChange()
+{
+	checkRAData();
+}
+
+function initStartTimeChange()
+{
+	checkRAData();
+}
+
+function isChecked()
+{
+	var cf1 = document.forms[1];
+	var cf2 = document.forms[2];
+	var cf3 = document.forms[3];
+	var cf4 = document.forms[4];
+
+    var cf6 = document.forms[6];
+
+	if (cf1.Start_When_Boot_Up.value == "On")
+		cf1.action_Start_When_Boot_Up.checked=true;
+	else 
+		cf1.action_Start_When_Boot_Up.checked=false;
+
+/*
+	if (cf1.IPv6_debug.value == "On")
+		cf1.ipv6_debug.checked=true;
+	else 
+		cf1.ipv6_debug.checked=false;
+	
+	if (cf1.hidden_lacp_debug.value == "1")
+		cf1.lacp_debug.checked=true;
+	else
+		cf1.lacp_debug.checked=false;
+	
+	if (cf1.hidden_gbsd_debug.value == "1")
+		cf1.gbsd_debug.checked=true;
+	else 
+		cf1.gbsd_debug.checked=false;	
+*/
+
+	if (cf2.dump_LAN_WAN_pkt.value == "On")
+		cf2.action_Capture_Packets.checked=true;
+	else 
+		cf2.action_Capture_Packets.checked=false;
+
+	if (cf3.WAN_port_mirror_to_LAN_port.value == "On")
+		cf3.action_Mirror_Port.checked=true;
+	else 
+		cf3.action_Mirror_Port.checked=false;
+
+    if (cf3.Smart_Connect_debug_Enable.value == "On")
+		cf3.smartconnect_debug.checked=true;
+	else 
+		cf3.smartconnect_debug.checked=false;
+
+
+	if (cf4.Allow_external_IPv6_hosts_ping_internal_IPv6_hosts.value == "On")
+		cf4.wan_ping_to_lan.checked=true;
+	else 
+		cf4.wan_ping_to_lan.checked=false;
+
+    if (cf6.unset_Deauth.value == "1")
+        cf6.unset_Deauth.checked=false;
+    else 
+        cf6.unset_Deauth.checked=true;
+
+	
+}
+
+function clickSaveButton()
+{
+    var cf2 = document.forms[2];
+	if (cf2.action_Start_Capture.disabled)
+		alert("Debug Log capturing in progress");
+	cf2.action_Start_Capture.outerHTML='<button type="SUBMIT" value="Start_Capture" name=action_Start_Capture class="button-sty1" > Start Capture </button>';
+}
+//-->
+</script>
+<link rel="stylesheet" type="text/css" href="css/mainpage.css">
+<link href="css/custom.css" rel="stylesheet" type="text/css">
+
+</head>
+<body onload="init();isChecked();">
+<form id="cf" action=newdebug.cgi method="POST">
+	<table style="height:92px;width:100%;margin:0;padding:0" CELLPADDING=0 CELLSPACING=0 class="newtopframe">
+      <tr>
+          <td style="padding-left:20px"><img style="width: 216px" src="img/NightHawk.png" ></td>
+      </tr>
+  	</table>
+<span id="ModuleName"><b>Nighthawk <%12%></b></span>
+<div class="pl-10"><b>Basic Information</b></div>
+<table width="100%">
+<tr>
+<td width="22%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPU Load</b><br><br></td>
+<td width="78%"><b>CPU1: <%3531%>% CPU2: <%3532%>% CPU3: <%3533%>% CPU4: <%3533%>%</b><br><br></td>
+</tr>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Memory Usage (Used/Total)</b><br><br></td>
+<td><b><%3534%>MB/<%3535%>MB</b><br><br></td>
+</tr>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flash Usage (Used/Total)</b><br><br></td>
+<td><b><%3536%>MB/<%3537%>MB</b><br><br></td>
+</tr>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Network Session (Active/Total)</b><br><br></td>
+<td><b><%3538%></b><br><br></td>
+</tr>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System Uptime</b><br><br></td>
+<td><b><%3539%></b><br><br></td>
+</tr>
+</table>
+</form>
+<form id="cf1" action=newdebug.cgi method="POST">
+&nbsp;&nbsp;
+<b>Debug Log Capture</b>
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="checkbox" name="action_Start_When_Boot_Up" value="Start_When_Boot_Up" onclick="document.forms[1].submit();" ><b> Start Debug Log Capture when boot up</b>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<!--
+(<input type="checkbox" name="ipv6_debug" value="IPv6_debug" onclick="document.forms[1].submit();" ><b> IPv6 debug enable</b>)
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="checkbox" name="lacp_debug" value="LACP_debug" onclick="document.forms[1].submit();"><b> LACP debug enable</b>
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="checkbox" name="gbsd_debug" value="GBSD_debug" onclick="document.forms[1].submit();"><b> gbsd debug enable</b>
+-->
+<br><br>
+<input type="hidden" name="Start_When_Boot_Up" value="<%3540%>">
+<input type="hidden" name="hidden_lacp_debug" value="<%3541%>">
+<input type="hidden" name="hidden_gbsd_debug" value="<%3542%>">
+<input type="hidden" name="IPv6_debug" value="<%3543%>">
+<input type="hidden" name="form" value="1" >
+</form>
+<form id="cf2" action=newdebug.cgi method="POST">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="checkbox" name="action_Capture_Packets" value="Capture_Packet" onclick="document.forms[2].submit();" ><b> Enable LAN/WAN Packet Capture</b>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>Store location</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="store_location" onchange="document.forms[2].submit();">
+<option value="memory" <%3544%>>System Memory&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+<option value="usb" <%3545%>>USB Storage</option>
+</select>
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="SUBMIT" value="Start_Capture" name="action_Start_Capture" class="button-sty1" >
+Start Capture
+</button>
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="BUTTON" value="DebugLog" name="DebugLog" onclick="window.location.href = 'Debug_log.zip';clickSaveButton();" class="button-sty1">
+Save Debug Log
+</button> 
+<br><br>
+<input type="hidden" name="capture_in_process" value="<%3546%>">
+<input type="hidden" name="dump_LAN_WAN_pkt" value="<%3547%>">
+<input type="hidden" name="form" value="2" >
+</form>
+<form id="cf3" action=newdebug.cgi method="POST">
+&nbsp;&nbsp;
+<input type="checkbox" name="action_Mirror_Port" value="Port_mirror" onclick="document.forms[3].submit();"><b> WAN Port mirror to LAN port 1</b>
+<input type="hidden" name="WAN_port_mirror_to_LAN_port" value="<%3548%>">
+<br><br>
+&nbsp;&nbsp;
+<input type="checkbox" name="smartconnect_debug" value="smartconnect_debug" onclick="document.forms[3].submit();"><b> Smart connect debug enable</b>
+<input type="hidden" name="Smart_Connect_debug_Enable" value="<%3549%>">
+&nbsp;&nbsp;
+<input type="hidden" name="form" value="3" >
+</form>
+<form id="cf4"  action="advanced_control.cgi" method="POST">
+<br>
+&nbsp;&nbsp;
+<input type="checkbox" name="wan_ping_to_lan" value="wan_ping_to_lan" onclick="document.forms[4].submit();"><b> Allow external IPv6 hosts ping internal IPv6 hosts</b>
+<input type="hidden" name="Allow_external_IPv6_hosts_ping_internal_IPv6_hosts" value="<%3550%>">
+<br><br>
+</form>
+<%3515%>
+<br><br>
+<form id="cf5" action=newdebug.cgi method="POST">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="SUBMIT" value="Start_Qteric_Update" name="action_Qterics_Update" class="button-sty1" >
+Start Qterics Update
+</button>
+<input type="hidden" name="form" value="4" >
+</form>
+<%3517%>
+<%3551%>
+<br>
+<form id="cf4" action=radebug.cgi method="POST">
+&nbsp;&nbsp;
+<b>RA Stage Management</b>
+<br><br>
+<table width="45%">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%3552%>
+<!--
+<input type="checkbox" name="stageQa" value="<%3553%>" <%3554%> onclick="stageQaChange();" ><b> qa </b>
+&nbsp;&nbsp;
+<input type="checkbox" name="stageDev" value="<%3555%>" <%3556%> onclick="stageDevChange();" ><b> dev </b>
+&nbsp;&nbsp;
+<input type="checkbox" name="stageProd" value="<%3557%>" <%3558%> onclick="stageProdChange();" ><b> prod </b>
+&nbsp;&nbsp;
+-->
+<%3551%>
+<button type="SUBMIT" value="raChange" id="raParamSetting" class="button-sty1" >
+<span id="raBtnLeft" class="roundleft_button">Restart RA Process </span><span id="raBtnRight" class="roundright_button"></span>
+</button>
+<%3552%>
+
+<!--
+<button type="SUBMIT" value="raChange" id="raParamSetting" class="button-rule" >
+<span id="raBtnLeft" class="roundleft_button">&nbsp;&nbsp; Restart RA Process </span><span id="raBtnRight" class="roundright_button">&nbsp;&nbsp;</span>
+</button>
+-->
+<%3551%>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftp server:</b><br><br></td>
+<td nowrap width="20%" align="left"><input type="text" name="serverIP" value="<%3559%>" onchange="serverIPChange();" size="18" maxlength="33"></td>
+</tr>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https server:</b><br><br></td>
+<td nowrap width="20%" align="left"><input type="text" name="HTTPserverIP" value="<%3560%>" onchange="serverIPChange();" size="18" maxlength="33"></td>
+</tr>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initial start time:</b><br><br></td>
+<td nowrap width="50%" align="left"><input type="text" name="initStartTime" value="<%3561%>" onchange="initStartTimeChange();" size="18" maxlength="33"></td>
+<br><br>
+</tr>
+</table>
+<input type="hidden" name="form" value="4" >
+<%3552%>
+<!--
+<input type="hidden" name="raStageQa" value="<%3553%>" >
+<input type="hidden" name="raStageDev" value="<%3555%>" >
+<input type="hidden" name="raStageProd" value="<%3557%>" >
+-->
+<%3551%>
+<input type="hidden" name="raServerIP" value="<%3559%>" >
+<input type="hidden" name="raHTTPServerIP" value="<%3560%>" >
+<input type="hidden" name="raInitStartTime" value="<%3561%>" >
+</form>
+<%3552%>
+
+<br>
+<form id="cf5" action=wldebug.cgi method="POST">
+&nbsp;&nbsp;
+<b>Beacon Interval and DTIM</b>
+<br><br>
+<table width="45%">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<button type="SUBMIT" value="wlChange" id="wlParamSetting" class="button-sty1" >
+<span id="wlBtnLeft" class="roundleft_button"> Wireleass Beacon Interval Apply</span><span id="wlBtnRight" class="roundright_button"></span>
+</button>
+<br><br>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4GHz Beacon Interval:</b><br><br></td>
+<td nowrap width="50%" align="left"><input type="number" step="10" min="20" max="100" name="wl0_beacon" value="<%3503%>">ms (20-100)</td>
+</tr>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4GHz DTIM:</b><br><br></td>
+<td nowrap width="50%" align="left"><input type="number" min="1" max="255" name="wl0_dtim" value="<%3505%>">ms (1-255)</td>
+</tr>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5GHz1 Beacon Interval:</b><br><br></td>
+<td nowrap width="50%" align="left"><input type="number" step="10" min="20" max="100" name="wl1_beacon" value="<%3504%>">ms (20-100)</td>
+</tr>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5GHz1 DTIM:</b><br><br></td>
+<td nowrap width="50%" align="left"><input type="number" min="1" max="255" name="wl1_dtim" value="<%3506%>">ms (1-255)</td>
+</tr>
+<%1676%>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5GHz2 Beacon Interval:</b><br><br></td>
+<td nowrap width="50%" align="left"><input type="number" step="10" min="20" max="100" name="wl2_beacon" value="<%3562%>">ms (20-100)</td>
+</tr>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5GHz2 DTIM:</b><br><br></td>
+<td nowrap width="50%" align="left"><input type="number" min="1" max="255" name="wl2_dtim" value="<%3563%>">ms (1-255)</td>
+</tr>
+<%1685%>
+</table>
+<input type="hidden" name="form" value="5" >
+
+</form>
+
+<br>
+<form id="cf6" action=bandsteerdebug.cgi method="POST">
+&nbsp;&nbsp;
+<b>Smart connect setting</b>
+<br><br>
+<table width="45%">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<button type="SUBMIT" value="bandsteerChange" id="bandsteerParamSetting" class="button-sty1" >
+<span id="bandsteerBtnLeft" class="roundleft_button"> Smart Connect Apply</span><span id="bandsteerBtnRight" class="roundright_button"></span>
+</button>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="checkbox" name="unset_Deauth" value="<%3564%>" ><b> Unset bsd idle beforedeauth</b>
+
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4GHz Band steer policy:</b><br><br></td>
+<td nowrap width="20%" align="left"><input type="text" name="wl0_bsd_if_qualify_policy" value="<%3565%>" size="10" maxlength="15"></td>
+</tr>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5GHz1 Band steer policy:</b><br><br></td>
+<td nowrap width="20%" align="left"><input type="text" name="wl1_bsd_if_qualify_policy" value="<%3566%>" size="10" maxlength="15"></td>
+</tr>
+<%1676%>
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5GHz2 Band steer policy:</b><br><br></td>
+<td nowrap width="20%" align="left"><input type="text" name="wl2_bsd_if_qualify_policy" value="<%3567%>" size="10" maxlength="15"></td>
+</tr>
+<%1685%>
+</table>
+<input type="hidden" name="form" value="6" >
+</form>
+
+</body>
+</html>

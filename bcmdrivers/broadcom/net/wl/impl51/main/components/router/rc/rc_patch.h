@@ -1,0 +1,11 @@
+#ifndef _RC_PATCH_H_
+#define _RC_PATCH_H_
+void iqos_restore_defaults(void);
+int config_switch_reg(void);
+int config_switch(void);
+int config_iptv_params(void);
+int disable_mfp();
+void save_wlan_time(void);
+void config_arp_table(void);
+int active_vlan(void);
+#endif /*_RC_PATCH_H_*/

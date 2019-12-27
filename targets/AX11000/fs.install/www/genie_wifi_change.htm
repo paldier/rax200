@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="<%295%>">	
+	<title>NETGEAR Genie</title>
+	
+	<link href="css/custom.css" rel="stylesheet" type="text/css">
+</head>
+<script src="jquery.js"></script>
+<script src="script/script.js"></script>
+<link rel="stylesheet" type="text/css" href="css/mainpage.css">	
+<link rel="stylesheet" type="text/css" href="css/tabs.css">
+<link rel="stylesheet" type="text/css" href="css/button.css">
+<link rel="stylesheet" type="text/css" href="css/menu.css">
+<link rel="stylesheet" href="<%295%>">
+<%14%>
+<script language="javascript" type="text/javascript">
+
+   function nextClick(){
+      cf=document.forms[0];
+      if (cf.ssid_2g.value == "")
+      {
+        alert("User Name cannot be empty");
+        return false;
+      }
+      if (cf.pass_2g.value == "")
+      {
+        alert("password cannot be empty");
+        return false;
+      }
+      if(cf.pass_2g.value.length < 8)
+      {
+        alert("<%57%>");
+        return false;    
+      }
+      if (cf.ssid_5g.value == "")
+      {
+        alert("User Name cannot be empty");
+        return false;
+      }
+      if (cf.pass_5g.value == "")
+      {
+        alert("password cannot be empty");
+        return false;
+      }
+      if(cf.pass_5g.value.length < 8)
+      {
+        alert("<%57%>");
+        return false;    
+      }
+       if (cf.ssid_5g_2.value == "")
+      {
+        alert("User Name cannot be empty");
+        return false;
+      }
+      if (cf.pass_5g_2.value == "")
+      {
+        alert("password cannot be empty");
+        return false;
+      }
+      if(cf.pass_5g_2.value.length < 8)
+      {
+        alert("<%57%>");
+        return false;    
+      }
+      
+      cf.change.value = "1";
+      document.forms[0].submit();
+      $("#modalBox").css("display","none");
+      $("#loading").css("display","block");    
+  }
+
+  function redirectClick(){
+      document.forms[0].submit();
+  }
+  
+  </script>
+
+</head>
+
+<body style="background-color:#FFFFFF" >
+  <form id="target" name="formname" method="POST" action="genie_change_wifi.cgi">
+    <div id="modalBox" class="modal-setup" style="align:center;width:620px;margin: 0px auto;padding-top: 50px;">
+      <div class="modal-header">
+        <!--<div class="modalBox-title">Setup your WiFi</div>-->
+         <div class="subhead2 pl-0"><%1649%></div>
+      </div>
+     
+      <div class="modal-body">
+      <div style="color: #333;font-size: 14px;margin-top:20px">
+	     <%2881%>
+      </div>
+      <table border="0" cellpadding="0" cellspacing="3" width="99%">
+      <tr>
+        <td>&nbsp;</td>
+        <td class="centerTd"><%2882%><input class="input1" type="text" name="ssid_2g" value="<%505%>" size="20" maxlength="32"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="centerTd"><%2883%><input class="input1" type="text" name="pass_2g" value="<%508%>" size="20" maxlength="64"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <%2920%>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="centerTd"><%2886%><input class="input1" type="text" name="ssid_5g" value="<%506%>" size="20" maxlength="32"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="centerTd"><%2921%><input class="input1" type="text" name="pass_5g" value="<%509%>" size="20" maxlength="64"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <%2922%>
+      <%1676%>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="centerTd"><%2923%><input class="input1" type="text" name="ssid_5g" value="<%506%>" size="20" maxlength="32"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="centerTd"><%2924%><input class="input1" type="text" name="pass_5g" value="<%509%>" size="20" maxlength="64"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="centerTd"><%2925%><input class="input1" type="text" name="ssid_5g_2" value="<%507%>" size="20" maxlength="32"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="centerTd"><%2926%><input class="input1" type="text" name="pass_5g_2" value="<%510%>" size="20" maxlength="64"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <%1685%>
+      <tr style="height:10px">
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+      </tr>
+      </table>
+		<table border="0" cellpadding="0" cellspacing="3"  width="99%">
+	        <tr>
+			
+	        <td class="textRow centerTd">		
+				<button class = "button-sty1"  onClick="nextClick();"><span><%343%></span></button>
+				<span style="display:-moz-inline-box;display:inline-block;width:300px;"></span>
+				<button class = "button-sty1"  onClick="redirectClick();"><span><%2927%></button>
+			</td>
+	      	<td>&nbsp;</td>
+			</tr>
+		</table>
+
+     
+
+    </div>
+    </div>
+    <div id="loading" style="display:none">
+    	<div style="padding-top:200px;text-align:center">
+       <img id="loading" src="loading.gif" frameborder="0" border="0" style="margin:auto">
+      </div>
+    </div>
+    <input type="hidden" name="change" value="">
+  </form>
+</body>
+
+</html>

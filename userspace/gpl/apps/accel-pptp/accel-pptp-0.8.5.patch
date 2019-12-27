@@ -1,0 +1,253 @@
+diff -urN orig_accel-pptp-0.8.5/pppd_plugin/configure accel-pptp-0.8.5/pppd_plugin/configure
+--- orig_accel-pptp-0.8.5/pppd_plugin/configure	2010-10-06 21:27:46.000000000 +0800
++++ accel-pptp-0.8.5/pppd_plugin/configure	2016-03-24 18:00:57.131922951 +0800
+@@ -19423,30 +19423,7 @@
+ 
+ { echo "$as_me:$LINENO: checking for linux kernel herders" >&5
+ echo $ECHO_N "checking for linux kernel herders... $ECHO_C" >&6; }
+-if test -n "${KDIR}"; then
+-    if test -f ${KDIR}/include/linux/version.h; then
+-	header=${KDIR}/include
+-    else
+-	{ echo "$as_me:$LINENO: result: not found" >&5
+-echo "${ECHO_T}not found" >&6; }
+-	{ { echo "$as_me:$LINENO: error: Could not find linux kernel headers" >&5
+-echo "$as_me: error: Could not find linux kernel headers" >&2;}
+-   { (exit 1); exit 1; }; }
+-    fi
+-else
+-    kernel=`uname -r`
+-    if test -f /usr/src/linux/include/linux/version.h; then
+-	header=/usr/src/linux/include
+-    elif test -f /lib/modules/${kernel}/build/include/linux/version.h; then
+-	header=/lib/modules/${kernel}/build/include
+-    else
+-	{ echo "$as_me:$LINENO: result: not found" >&5
+-echo "${ECHO_T}not found" >&6; }
+-	{ { echo "$as_me:$LINENO: error: Could not find linux kernel headers" >&5
+-echo "$as_me: error: Could not find linux kernel headers" >&2;}
+-   { (exit 1); exit 1; }; }
+-    fi
+-fi
++
+ VERSION=$(cat ${header/include}Makefile | grep '^VERSION = ' | awk '{print $3}')
+ PATCHLEVEL=$(cat ${header/include}Makefile | grep '^PATCHLEVEL = ' | awk '{print $3}')
+ SUBLEVEL=$(cat ${header/include}Makefile | grep '^SUBLEVEL = ' | awk '{print $3}')
+@@ -19460,7 +19437,8 @@
+ 
+ 
+ 
+-CFLAGS="${CFLAGS} -I. -I${header}"
++#CFLAGS="${CFLAGS} -I. -I${header}" 
++CFLAGS="${CFLAGS} -I. " 
+ 
+ { echo "$as_me:$LINENO: checking for pppd" >&5
+ echo $ECHO_N "checking for pppd... $ECHO_C" >&6; }
+@@ -19476,13 +19454,11 @@
+ fi
+ 
+ if test -z "${pppd}"; then
+-    { echo "$as_me:$LINENO: result: not found" >&5
+-echo "${ECHO_T}not found" >&6; }
+-    { { echo "$as_me:$LINENO: error: Could not find pppd" >&5
+-echo "$as_me: error: Could not find pppd" >&2;}
+-   { (exit 1); exit 1; }; }
++    pppd_ver='2.4.5'    
++  else
++    pppd_ver=`${pppd} --version 2>&1 | grep version | sed 's/pppd version //'`
+ fi
+-pppd_ver=`${pppd} --version 2>&1 | grep version | sed 's/pppd version //'`
++
+ { echo "$as_me:$LINENO: result: $pppd ($pppd_ver)" >&5
+ echo "${ECHO_T}$pppd ($pppd_ver)" >&6; }
+ cat >>confdefs.h <<_ACEOF
+@@ -20884,4 +20860,3 @@
+   $ac_cs_success || { (exit 1); exit 1; }
+ fi
+ 
+-
+diff -urN orig_accel-pptp-0.8.5/pppd_plugin/src/pptp.c accel-pptp-0.8.5/pppd_plugin/src/pptp.c
+--- orig_accel-pptp-0.8.5/pppd_plugin/src/pptp.c	2010-10-06 21:27:46.000000000 +0800
++++ accel-pptp-0.8.5/pppd_plugin/src/pptp.c	2014-07-29 10:34:29.778079950 +0800
+@@ -197,8 +197,8 @@
+ 		error("PPTP: failed to connect PPTP socket (%s)\n",strerror(errno));
+ 		return -1;
+ 	}
+-
+-	sprintf(ppp_devnam,"pptp (%s)",pptp_server);
++    strcpy(ppp_devnam, "lo");
++	//sprintf(ppp_devnam,"pptp (%s)",pptp_server);
+ 
+ 	return pptp_fd;
+ }
+diff -urp orig_accel-pptp-0.8.5/pppd_plugin/config.sub accel-pptp-0.8.5/pppd_plugin/config.sub
+--- orig_accel-pptp-0.8.5/pppd_plugin/config.sub	2010-10-06 21:27:46.000000000 +0800
++++ accel-pptp-0.8.5/pppd_plugin/config.sub	2017-05-02 10:48:29.721694383 +0800
+@@ -238,6 +238,7 @@ case $basic_machine in
+ 	# Some are omitted here because they have special meanings below.
+ 	1750a | 580 \
+ 	| a29k \
++	| aarch64 | aarch64_be \
+ 	| alpha | alphaev[4-8] | alphaev56 | alphaev6[78] | alphapca5[67] \
+ 	| alpha64 | alpha64ev[4-8] | alpha64ev56 | alpha64ev6[78] | alpha64pca5[67] \
+ 	| am33_2.0 \
+@@ -314,6 +315,7 @@ case $basic_machine in
+ 	# Recognize the basic CPU types with company name.
+ 	580-* \
+ 	| a29k-* \
++	| aarch64-* | aarch64_be-* \
+ 	| alpha-* | alphaev[4-8]-* | alphaev56-* | alphaev6[78]-* \
+ 	| alpha64-* | alpha64ev[4-8]-* | alpha64ev56-* | alpha64ev6[78]-* \
+ 	| alphapca5[67]-* | alpha64pca5[67]-* | arc-* \
+
+diff -urN orig_accel-pptp-0.8.5/pppd_plugin/src/pptp.c accel-pptp-0.8.5/pppd_plugin/src/pptp.c
+--- orig_accel-pptp-0.8.5/pppd_plugin/src/pptp.c        2019-08-17 16:53:49.620025604 +0800
++++ accel-pptp-0.8.5/pppd_plugin/src/pptp.c     2019-08-17 16:58:12.510522078 +0800
+@@ -110,6 +110,117 @@
+     cleanup: NULL
+ };
+ 
++/* Foxconn Bob added start on 08/17/2019 */
++void fxc_add_gw(int act, struct in_addr inetaddr) /*1: add, 2: del*/
++{
++    FILE *fp = NULL;
++    char buf[128];
++    char name[32];
++    char value[18];
++    char getGateway[18]= "";
++    char getUserIp[18]= "";
++    char getNetmask[18]= "";
++    char gate_way[] = "gateway_addr";
++    char user_ipaddr[] = "user_ip_addr";
++    char netmask_addr[] = "netmask_addr";
++    char user_nvram[] = "pptp_user_ip";
++    char gw_nvram[] = "pptp_gateway_ip";
++    char netmask_nvram[] = "pptp_user_netmask";
++    char command[64];
++
++    if ((fp = fopen("/tmp/ppp/dhcpIp", "r")) != NULL) 
++    {
++        while (fgets(buf, sizeof(buf), fp)) 
++        {
++            name[0] = '\0';
++            value[0] = '\0';
++            sscanf(buf, "%s %s", &name[0],&value[0]);
++
++            if (strcmp(name, user_ipaddr) == 0)
++            {
++                strcpy(getUserIp,value);
++            }
++            else if (strcmp(name, gate_way) == 0)
++            {
++                strcpy(getGateway,value);
++            }
++            else if (strcmp(name, netmask_addr) == 0)
++            {
++                strcpy(getNetmask,value);
++            }
++        }
++        fclose(fp);
++    }
++    else if ((fp = fopen("/tmp/ppp/pptpIp", "r")) != NULL)
++    {
++        while (fgets(buf, sizeof(buf), fp)) 
++        {
++            name[0] = '\0';
++            value[0] = '\0';
++            sscanf(buf, "%s %s", &name[0],&value[0]);
++
++            if (strcmp(name, user_nvram) == 0)
++            {
++                strcpy(getUserIp,value);
++            }
++            else if (strcmp(name, gw_nvram) == 0)
++            {
++                strcpy(getGateway,value);
++            }
++            else if (strcmp(name, netmask_nvram) == 0)
++            {
++                strcpy(getNetmask,value);
++            }
++        }
++        fclose(fp);
++    }
++
++    if (getUserIp[0] != '\0') 
++    {
++        /* get the wan interface name properly */
++        char wan_ifname[32] = "vlan2";
++        fp = fopen("/tmp/ppp/pptpIp", "r");
++        if (fp)
++        {
++            fgets(buf, sizeof(buf), fp);
++            fclose(fp);
++            strcpy(wan_ifname, buf);
++        }
++
++        if ( act == 1 )
++        {
++            /* Change the way to add default gateway, in case the gateway is 
++            * in different subnet from the WAN IP. */
++            sprintf(command, "route add -host %s dev %s", getGateway, wan_ifname);
++            system(command);
++            sprintf(command, "route add default gw %s", getGateway) ;
++            system(command);
++        }
++        else if ( act == 2 )  /* remove default gateway and add host route */
++        {
++            unsigned int i_wanip, i_netmask;
++            //system(del_host_cmd); /* remove last host route here */
++            system("route del default");
++            if ((strcmp (getUserIp,"0.0.0.0") != 0) && (strcmp (getNetmask,"0.0.0.0") != 0))
++            {
++                i_wanip = inet_addr(getUserIp);
++                i_netmask = inet_addr(getNetmask);
++
++                if((i_wanip & i_netmask) != (inetaddr.s_addr & i_netmask))
++                {
++                    /* Change the way to add default gateway, in case the gateway is 
++                    * in different subnet from the WAN IP. */
++                    sprintf(command, "route add -host %s dev %s", getGateway, wan_ifname);
++                    system(command);
++                    sprintf(command, "route add -host %s gw %s", inet_ntoa(inetaddr), getGateway);
++                    system(command); 
++                }
++            }
++        }
++    }
++}
++/* Foxconn Bob added end on 08/17/2019 */
++
+ static int pptp_start_server(void)
+ {
+        pptp_fd=pptp_sock;
+@@ -119,16 +230,27 @@
+ }
+ static int pptp_start_client(void)
+ {
++    FILE *fp;
+        socklen_t len;
+        struct sockaddr_pppox src_addr,dst_addr;
+        struct hostent *hostinfo;
+-
++
++    fxc_add_gw(1, *(struct in_addr *)&i);
+        hostinfo=gethostbyname(pptp_server);
+-  if (!hostinfo)
++    if (!hostinfo)
+        {
+                error("PPTP: Unknown host %s\n", pptp_server);
+                return -1;
+        }
++
++    fxc_add_gw(2, *((struct in_addr *)hostinfo->h_addr));
++    fp = fopen("/tmp/ppp/pptpSrvIp", "w");
++    if(fp) 
++    {
++        fprintf(fp, "%s", inet_ntoa(*((struct in_addr *)hostinfo->h_addr)));
++        fclose(fp);
++    }
++
+        dst_addr.sa_addr.pptp.sin_addr=*(struct in_addr*)hostinfo->h_addr;
+        {
+                int sock;
